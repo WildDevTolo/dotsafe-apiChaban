@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bordeaux - Pont Chaban{% endblock %}
+
+{% block body %}
+
+{# Navigation bar #}
+
+    {% include './_component/_navbar.html.twig' %}
+{#  Fake today's date  #}
+<div class="img">
+
+    <p class="d-flex justify-content-end mb-5"
+       id="today"
+       style="color:white;"
+       data-today="{{ date|date('Y-m-d') }}">
+        {{ date|date('d-m-Y') }}
+    </p>
+
+{#  Countdown before next bridge closing  #}
+
+    {% include './_component/_countdown.html.twig' %}
+
+
+    <p class="d-flex justify-content-center mt-5 mb-5"
+       style="font-size:1.3em;text-decoration: underline" ><a href="#table">VOIR TOUTES LES FERMETURES</a></p>
+
+</div>
+
+    {# Closing bridge's ref hours table #}
+
+
+    <table id="table" class="table table-hover w-75 m-auto">
+        <thead>
+        <tr style="background-color: #f4f2f2;">
+            <th scope="col">Date de fermeture</th>
+            <th scope="col">Raison/Nom du bateau</th>
+            <th scope="col">Heure de fermeture</th>
+            <th scope="col">Heure de réouverture</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in datas %}
+            {% if data.fields.date_passage|date("m-Y") > date|date("m-Y") %}
+                <tr>
+                    <th scope="row"
+                        class="closingDate"
+                        data-date="{{ data.fields.date_passage|date("Y-m-d ") ~ data.fields.fermeture_a_la_circulation|date('G:i:s', "Europe/Paris")}}">
+                        {{ data.fields.date_passage|date("d-m-Y")}}
+                    </th>
+                    <td>{{ data.fields.bateau}}</td>
+                    <td>{{ data.fields.fermeture_a_la_circulation|date('G:i', "Europe/Paris") }}</td>
+                    <td>{{ data.fields.re_ouverture_a_la_circulation }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}
+
+
+

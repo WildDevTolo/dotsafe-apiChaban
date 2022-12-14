@@ -1,0 +1,76 @@
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.img{
+  background: url('../img/pont-chaban.jpg');
+  background-size : 1825px 800px;
+  background-repeat: no-repeat;
+  height : 100vh;
+  margin-bottom: 5vh;
+}
+
+
+.countdown {
+  color: white;
+  font-size: 2em;
+  > span {
+    border : white solid 2px;
+    margin-right : 0.5em;
+  }
+}
+
+table {
+  border : red solid 2px;
+  border-radius: 2em 1em 2em 2em;
+  margin-top: 450px;
+}
+
+
+/* Fade in */
+a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+a:hover::after,
+a:focus::after {
+
+}
+
+a{
+  text-decoration: none;
+  color: white;
+  &:visited {
+    color: white;
+  }
+  &:hover {
+    opacity: 0.8;
+    color: grey;
+  }
+}
+
+#table {
+  margin-top: 400px;
+}
+
+.closings {
+  font-size: 1.5em;
+  text-decoration: underline;
+}
+
+
