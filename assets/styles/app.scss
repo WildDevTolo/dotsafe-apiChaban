@@ -1,6 +1,4 @@
 @import "~bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap');
 
 
 * {
@@ -17,7 +15,6 @@
   margin-bottom: 5vh;
 }
 
-
 .countdown {
   color: white;
   font-size: 2em;
@@ -31,25 +28,6 @@ table {
   border : red solid 2px;
   border-radius: 2em 1em 2em 2em;
   margin-top: 450px;
-}
-
-
-/* Fade in */
-a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0.1em;
-  background-color: white;
-  opacity: 0;
-  transition: opacity 300ms, transform 300ms;
-}
-
-a:hover::after,
-a:focus::after {
-
 }
 
 a{
