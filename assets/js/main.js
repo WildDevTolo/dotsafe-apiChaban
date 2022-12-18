@@ -1,9 +1,9 @@
 // Countdown script //
 
+
 setInterval(() => {
  const closingDateSelector = document.querySelector('.closingDate')
  const closingDateData = closingDateSelector.dataset.date
- // alert(closingDateData)
 
  const todaySelector = document.querySelector('#today')
  const todayData = todaySelector.dataset.today

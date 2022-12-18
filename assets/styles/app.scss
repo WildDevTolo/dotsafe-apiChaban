@@ -1,4 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Inconsolata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Encode+Sans:wght@500&family=Inconsolata&display=swap');
+
 
 
 * {
@@ -6,8 +9,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  font-family: 'Encode Sans', sans-serif;
+}
 
-.img{
+form {
+  font-family : 'Inconsolata', monospace;
+}
+
+label {
+  font-size : 0.9em;
+}
+
+.background-img{
   background: url('../img/pont-chaban.jpg');
   background-size : 1825px 800px;
   background-repeat: no-repeat;
@@ -18,6 +32,7 @@
 .countdown {
   color: white;
   font-size: 2em;
+  font-family: 'Inconsolata', monospace;
   > span {
     border : white solid 2px;
     margin-right : 0.5em;
@@ -36,19 +51,30 @@ a{
   &:visited {
     color: white;
   }
-  &:hover {
-    opacity: 0.8;
-    color: grey;
-  }
 }
 
 #table {
   margin-top: 400px;
+  font-family: 'Inconsolata', monospace;
 }
 
-.closings {
-  font-size: 1.5em;
-  text-decoration: underline;
+#today {
+  font-family: 'Inconsolata', monospace;
+}
+
+.footer {
+  background: linear-gradient(#000018, #00154A);
+  width: 100%;
+  height: 20vh;
+  margin-top: 10vh;
+}
+
+ul {
+  list-style-type: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 
