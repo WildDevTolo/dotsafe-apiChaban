@@ -19,9 +19,6 @@ Ci-après, un descriptif de l'attendu :
 ---------------------------------------------------------------------------------------------------------------------------------------
 Cloner depuis le dépôt github
 
-run composer install
-run composer require symfony/webpack-encore-bundle
-run yarn install
-run yarn watch
+run composer install, composer require symfony/webpack-encore-bundle, yarn install and then yarn watch
 
 
