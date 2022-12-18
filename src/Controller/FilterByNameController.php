@@ -3,14 +3,13 @@
 namespace App\Controller;
 
 use App\Service\CallApi;
-use Grpc\Call;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class FilterByNameController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/filter_by_name', name: 'app_filter_by_name')]
     public function index(CallApi $callApi): Response
     {
 //        Retrieving dataset from API
@@ -18,15 +17,15 @@ class HomeController extends AbstractController
 
         $fakeDate = date_create('07-08-2022');
 
-//        Filter by date
+//        Filter by name
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $chosenDate = date('d-m-Y', strtotime($_POST['chosen-date']));
-        }
+            $fullBoatName = $_POST['reason'];
+            };
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('filter_by_name/index.html.twig', [
             'datas' => $datas['records'],
             'fakeDate' => $fakeDate,
+            'boatName' => $fullBoatName,
         ]);
     }
 }
-

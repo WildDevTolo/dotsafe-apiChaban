@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Horaires Fermetures{% endblock %}
+
+{% block body %}
+
+    {% include './_component/_navbar.html.twig' %}
+<div class="background-img">
+
+    <p class="d-flex justify-content-end mb-5"
+       id="today"
+       style="color:white;"
+       data-today="{{ fakeDate|date('Y-m-d') }}">
+        {{ fakeDate|date('d-m-Y') }}
+    </p>
+
+    {#  Countdown before next bridge closing  #}
+
+    <div class="d-flex justify-content-center mt-5">
+        <a href="#table"><button type="button" class="btn btn-outline-light">VOIR LES FERMETURES</button></a>
+    </div>
+
+</div>
+
+{% include './_component/_form.html.twig' %}
+
+
+<table id="table" class="table table-hover w-75 m-auto">
+    <thead>
+    <tr style="background-color: #f4f2f2;">
+        <th scope="col">Dates de fermeture</th>
+        <th scope="col">Raison/Nom du bateau</th>
+        <th scope="col">Heure de fermeture</th>
+        <th scope="col">Heure de réouverture</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for data in datas %}
+    {% if data.fields.date_passage|date("d-m-Y") == chosenDate|date("d-m-Y") %}
+                <tr>
+                    <th scope="row"
+                        class="closingDate"
+                        data-date="{{ data.fields.date_passage|date("Y-m-d ") ~ data.fields.fermeture_a_la_circulation|date('G:i:s', "Europe/Paris")}}">
+                        {{ data.fields.date_passage|date("d-m-Y")}}
+                    </th>
+                    <td>{{ data.fields.bateau}}</td>
+                    <td>{{ data.fields.fermeture_a_la_circulation|date('G:i', "Europe/Paris") }}</td>
+                    <td>{{ data.fields.re_ouverture_a_la_circulation }}</td>
+                </tr>
+
+                {% endif %}
+                {% endfor %}
+    </tbody>
+</table>
+    <div class="d-flex justify-content-center mt-2">
+        <a href="/" style="color: black;">
+            <button type="button" class="btn btn-secondary btn-sm d-flex justify-content-center">
+                Revenir à l'accueil
+            </button>
+        </a>
+    </div>
+
+    {% include '_component/_footer.html.twig' %}
+
+{% endblock %}

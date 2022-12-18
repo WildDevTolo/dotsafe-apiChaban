@@ -8,24 +8,26 @@
 
     {% include './_component/_navbar.html.twig' %}
 {#  Fake today's date  #}
-<div class="img">
+<div class="background-img">
 
     <p class="d-flex justify-content-end mb-5"
        id="today"
        style="color:white;"
-       data-today="{{ date|date('Y-m-d') }}">
-        {{ date|date('d-m-Y') }}
+       data-today="{{ fakeDate|date('Y-m-d') }}">
+        {{ fakeDate|date('d-m-Y') }}
     </p>
 
 {#  Countdown before next bridge closing  #}
 
     {% include './_component/_countdown.html.twig' %}
 <div class="d-flex justify-content-center mt-5">
-    <a href="#table"><button type="button" class="btn btn-outline-light">VOIR TOUTES LES FERMETURES</button></a>
+    <a href="#filter-form"><button type="button" class="btn btn-outline-light">VOIR TOUTES LES FERMETURES</button></a>
+</div>
 
 </div>
 
-
+<div id="filter-form">
+    {% include './_component/_form.html.twig' %}
 </div>
 
     {# Closing bridge's ref hours table #}
@@ -33,7 +35,7 @@
     <table id="table" class="table table-hover w-75 m-auto">
         <thead>
         <tr style="background-color: #f4f2f2;">
-            <th scope="col">Date de fermeture</th>
+            <th scope="col">Dates de fermeture</th>
             <th scope="col">Raison/Nom du bateau</th>
             <th scope="col">Heure de fermeture</th>
             <th scope="col">Heure de réouverture</th>
@@ -41,7 +43,7 @@
         </thead>
         <tbody>
         {% for data in datas %}
-            {% if data.fields.date_passage|date("m-Y") > date|date("m-Y") %}
+            {% if data.fields.date_passage|date("Y-m-d") >= fakeDate|date("Y-m-d") %}
                 <tr>
                     <th scope="row"
                         class="closingDate"
@@ -57,6 +59,10 @@
 
         </tbody>
     </table>
+
+
+
+    {% include './_component/_footer.html.twig' %}
 {% endblock %}
 
 
